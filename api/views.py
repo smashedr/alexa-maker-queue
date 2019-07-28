@@ -26,7 +26,11 @@ def alexa_post(request):
         event = json.loads(body)
         logger.info(event)
         intent = event['request']['intent']['name']
-        if intent == 'GetTitle':
+        if intent == 'NextLevel':
+            return get_next_level(event)
+        elif intent == 'RandomLevel':
+            return get_random_level(event)
+        elif intent == 'GetTitle':
             return get_title(event)
         elif intent == 'UpdateTitle':
             return update_title(event)
@@ -51,6 +55,20 @@ def alexa_post(request):
     except Exception as error:
         logger.exception(error)
         return alexa_resp('Error. {}'.format(error), 'Error')
+
+
+def get_next_level(event):
+    logger.info('NextLevel')
+    twitch = Twitch(event['session']['user']['accessToken'])
+    twitch.send_irc_msg('!next')
+    return alexa_resp('Done.', 'Get Next Level')
+
+
+def get_random_level(event):
+    logger.info('RandomLevel')
+    twitch = Twitch(event['session']['user']['accessToken'])
+    twitch.send_irc_msg('!random')
+    return alexa_resp('Done.', 'Get Random Level')
 
 
 def get_viewers(event):

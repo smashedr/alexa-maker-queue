@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "maker queue",
+      "invocationName": "mario maker",
       "intents": [
         {
           "name": "RunCommercial",
@@ -94,6 +94,24 @@
         {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
+        },
+        {
+          "name": "NextLevel",
+          "slots": [],
+          "samples": [
+            "next level",
+            "for the next level",
+            "to get the next level"
+          ]
+        },
+        {
+          "name": "RandomLevel",
+          "slots": [],
+          "samples": [
+            "random level",
+            "a random level",
+            "for a random level"
+          ]
         }
       ],
       "types": []
