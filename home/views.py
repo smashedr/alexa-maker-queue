@@ -11,6 +11,12 @@ def home_view(request):
     return render(request, 'home.html')
 
 
+# @require_http_methods(["GET"])
+# def error_view(request):
+#     log_req(request)
+#     return render(request, 'error.html')
+
+
 def log_req(request):
     """
     DEBUGGING ONLY

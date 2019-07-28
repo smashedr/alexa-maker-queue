@@ -1,10 +1,12 @@
-from django.conf.urls import url
+from django.urls import path
 
 import oauth.views as oauth
 
+app_name = 'oauth'
+
 urlpatterns = [
-    url(r'authorize/', oauth.do_authorize, name='authorize'),
-    url(r'redirect/', oauth.oauth_redirect, name='redirect'),
-    url(r'token/', oauth.give_token, name='token'),
-    url(r'error/', oauth.has_error, name='error'),
+    path('authorize/', oauth.do_authorize, name='authorize'),
+    path('redirect/', oauth.oauth_redirect, name='redirect'),
+    path('token/', oauth.give_token, name='token'),
+    path('error/', oauth.has_error, name='error'),
 ]
