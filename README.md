@@ -45,9 +45,9 @@ Manage your Mario Maker queue in Twitch chat from Alexa
 
 #### Phrases
 
+- Alexa, ask Mario Maker to open the queue
 - Alexa, ask Mario Maker for the next level
 - Alexa, ask Mario Maker for a random level
-- Alexa, ask Mario Maker to open the queue
 
 #### URLs
 

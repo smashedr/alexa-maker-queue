@@ -24,7 +24,7 @@ def alexa_post(request):
     try:
         body = request.body.decode('utf-8')
         event = json.loads(body)
-        logger.info(event)
+        logger.debug(event)
         intent = event['request']['intent']['name']
         if intent == 'NextLevel':
             return get_next_level(event)
@@ -38,26 +38,20 @@ def alexa_post(request):
             return open_maker_queue(event)
         elif intent == 'CloseQueue':
             return close_maker_queue(event)
-        elif intent == 'GetTitle':
-            return get_title(event)
-        elif intent == 'UpdateTitle':
-            return update_title(event)
-        elif intent == 'RunCommercial':
-            return run_commercial(event)
-        elif intent == 'ChatStatus':
-            return chat_status(event)
         elif intent == 'ClearChat':
             return clear_chat(event)
-        elif intent == 'SendChat':
-            return send_chat(event)
-        elif intent == 'GetFollows':
-            return get_follows(event)
-        elif intent == 'GetGame':
-            return get_game(event)
-        elif intent == 'GetUptime':
-            return get_uptime(event)
-        elif intent == 'GetViewers':
-            return get_viewers(event)
+        # elif intent == 'SendChat':
+        #     return send_chat(event)
+        # elif intent == 'ChatStatus':
+        #     return chat_status(event)
+        # elif intent == 'GetTitle':
+        #     return get_title(event)
+        # elif intent == 'UpdateTitle':
+        #     return update_title(event)
+        # elif intent == 'GetFollows':
+        #     return get_follows(event)
+        # elif intent == 'GetGame':
+        #     return get_game(event)
         else:
             raise ValueError('Unknown Intent')
     except Exception as error:
@@ -66,117 +60,74 @@ def alexa_post(request):
 
 
 def get_next_level(event):
-    logger.info('NextLevel')
+    logger.debug('NextLevel')
     twitch = Twitch(event['session']['user']['accessToken'])
     twitch.send_irc_msg('!next')
     return alexa_resp('Done.', 'Get Next Level')
 
 
 def get_random_level(event):
-    logger.info('RandomLevel')
+    logger.debug('RandomLevel')
     twitch = Twitch(event['session']['user']['accessToken'])
     twitch.send_irc_msg('!random')
     return alexa_resp('Done.', 'Get Random Level')
 
 
 def skip_current_level(event):
-    logger.info('SkipLevel')
+    logger.debug('SkipLevel')
     twitch = Twitch(event['session']['user']['accessToken'])
     twitch.send_irc_msg('!skip')
     return alexa_resp('I skipped the current level.', 'Skip Current Level')
 
 
 def undo_next_level(event):
-    logger.info('UndoLevel')
+    logger.debug('UndoLevel')
     twitch = Twitch(event['session']['user']['accessToken'])
     twitch.send_irc_msg('!undo')
     return alexa_resp('I reverted the last level.', 'Undo Next Level')
 
 
 def open_maker_queue(event):
-    logger.info('OpenQueue')
+    logger.debug('OpenQueue')
     twitch = Twitch(event['session']['user']['accessToken'])
     twitch.send_irc_msg('!open')
     return alexa_resp('The queue is now open.', 'Open Maker Queue')
 
 
 def close_maker_queue(event):
-    logger.info('CloseQueue')
+    logger.debug('CloseQueue')
     twitch = Twitch(event['session']['user']['accessToken'])
     twitch.send_irc_msg('!close')
     return alexa_resp('The queue is now closed.', 'Close Maker Queue')
 
 
-def get_viewers(event):
-    logger.info('GetViewers')
-    twitch = Twitch(event['session']['user']['accessToken'])
-    stream = twitch.get_stream()
-    logger.info('stream: {}'.format(stream))
-    if not stream:
-        speech = 'You are not streaming right now.'
-    else:
-        s = '' if int(stream['viewers']) == 1 else ''
-        speech = 'You have {} viewer{}.'.format(stream['viewers'], s)
-    return alexa_resp(speech, 'Stream Viewers')
-
-
-def get_uptime(event):
-    logger.info('GetUptime')
-    twitch = Twitch(event['session']['user']['accessToken'])
-    uptime = twitch.get_uptime()
-    logger.info('uptime: {}'.format(uptime))
-    if uptime == 'Not Online':
-        speech = 'You are not streaming right now.'
-    else:
-        speech = 'You have been streaming for {}'.format(uptime)
-    return alexa_resp(speech, 'Stream Uptime')
-
-
-def get_game(event):
-    logger.info('GetGame')
-    twitch = Twitch(event['session']['user']['accessToken'])
-    channel = twitch.get_channel()
-    logger.info('channel:game: {}'.format(channel['game']))
-    speech = 'You are currently playing. {}'.format(channel['game'])
-    return alexa_resp(speech, 'Game')
-
-
-def get_follows(event):
-    logger.info('GetFollows')
-    twitch = Twitch(event['session']['user']['accessToken'])
-    channel = twitch.get_channel()
-    logger.info('channel:followers: {}'.format(channel['followers']))
-    speech = 'You currently have {} followers.'.format(channel['followers'])
-    return alexa_resp(speech, 'Followers')
-
-
-def send_chat(event):
-    logger.info('SendChat')
-    message = event['request']['intent']['slots']['message']['value']
-    logger.info('message:raw: {}'.format(message))
-    message = message.lstrip('chat').strip()
-    message = message.lstrip('to').strip()
-    message = message.lstrip('say').strip()
-    message = message.lstrip('i said').strip()
-    logger.info('message:stripped: {}'.format(message))
-    twitch = Twitch(event['session']['user']['accessToken'])
-    twitch.send_irc_msg(message)
-    return alexa_resp('Message sent.', 'Send Chat Message')
-
-
 def clear_chat(event):
-    logger.info('ChatStatus')
+    logger.debug('ClearChat')
     twitch = Twitch(event['session']['user']['accessToken'])
     twitch.send_irc_msg('/clear')
     return alexa_resp('Chat has been cleared.', 'Clear Chat')
 
 
+def send_chat(event):
+    logger.debug('SendChat')
+    message = event['request']['intent']['slots']['message']['value']
+    logger.debug('message:raw: {}'.format(message))
+    message = message.lstrip('chat').strip()
+    message = message.lstrip('to').strip()
+    message = message.lstrip('say').strip()
+    message = message.lstrip('i said').strip()
+    logger.debug('message:stripped: {}'.format(message))
+    twitch = Twitch(event['session']['user']['accessToken'])
+    twitch.send_irc_msg(message)
+    return alexa_resp('Message sent.', 'Send Chat Message')
+
+
 def chat_status(event):
-    logger.info('ChatStatus')
+    logger.debug('ChatStatus')
     status = event['request']['intent']['slots']['status']['value']
     mode = event['request']['intent']['slots']['mode']['value']
-    logger.info('status: {}'.format(status))
-    logger.info('mode: {}'.format(mode))
+    logger.debug('status: {}'.format(status))
+    logger.debug('mode: {}'.format(mode))
 
     if 'emote' in mode:
         chat_mode = 'emoteonly'
@@ -206,36 +157,45 @@ def chat_status(event):
         return alexa_resp(speech, 'Unknown Action')
 
 
-def update_title(event):
-    logger.info('UpdateTitle')
-    title = event['request']['intent']['slots']['title']['value']
-    title = title.title()
-    logger.info('title: {}'.format(title))
-    twitch = Twitch(event['session']['user']['accessToken'])
-    update = twitch.update_channel(title)
-    logger.info(update)
-    speech = 'Your title has been updated too. {}'.format(title)
-    return alexa_resp(speech, 'Update Title')
-
-
 def get_title(event):
-    logger.info('GetTitle')
+    logger.debug('GetTitle')
     twitch = Twitch(event['session']['user']['accessToken'])
     channel = twitch.get_channel()
-    logger.info(channel)
+    logger.debug(channel)
     title = channel['status']
-    logger.info('title: {}'.format(title))
+    logger.debug('title: {}'.format(title))
     speech = 'Your current title is. {}'.format(title)
     return alexa_resp(speech, 'Current Title')
 
 
-def run_commercial(event):
-    logger.info('RunCommercial')
+def update_title(event):
+    logger.debug('UpdateTitle')
+    title = event['request']['intent']['slots']['title']['value']
+    title = title.title()
+    logger.debug('title: {}'.format(title))
     twitch = Twitch(event['session']['user']['accessToken'])
-    commercial = twitch.run_commercial()
-    logger.info(commercial)
-    speech = 'A commercial has been started.'
-    return alexa_resp(speech, 'Commercial Started')
+    update = twitch.update_channel(title)
+    logger.debug(update)
+    speech = 'Your title has been updated too. {}'.format(title)
+    return alexa_resp(speech, 'Update Title')
+
+
+def get_follows(event):
+    logger.debug('GetFollows')
+    twitch = Twitch(event['session']['user']['accessToken'])
+    channel = twitch.get_channel()
+    logger.debug('channel:followers: {}'.format(channel['followers']))
+    speech = 'You currently have {} followers.'.format(channel['followers'])
+    return alexa_resp(speech, 'Followers')
+
+
+def get_game(event):
+    logger.debug('GetGame')
+    twitch = Twitch(event['session']['user']['accessToken'])
+    channel = twitch.get_channel()
+    logger.debug('channel:game: {}'.format(channel['game']))
+    speech = 'You are currently playing. {}'.format(channel['game'])
+    return alexa_resp(speech, 'Game')
 
 
 def log_req(request):
@@ -253,7 +213,7 @@ def log_req(request):
             data += '"%s": "%s", ' % (key, value)
     if data:
         data = data.strip(', ')
-        logger.info(data)
+        logger.debug(data)
         json_string = '{%s}' % data
         return json_string
     else:
