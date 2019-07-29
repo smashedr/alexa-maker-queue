@@ -1,25 +1,79 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "maker queue",
+      "invocationName": "mario maker",
       "intents": [
         {
-          "name": "RunCommercial",
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "NextLevel",
           "slots": [],
           "samples": [
-            "run a commercial"
+            "next",
+            "next level",
+            "for the next level",
+            "to get the next level"
           ]
         },
         {
-          "name": "GetTitle",
+          "name": "RandomLevel",
           "slots": [],
           "samples": [
-            "whats my current title",
-            "whats my current status",
-            "what is my current title",
-            "what is my current status",
-            "to get my current title",
-            "to get my current status"
+            "random",
+            "random level",
+            "a random level",
+            "for a random level"
+          ]
+        },
+        {
+          "name": "SkipLevel",
+          "slots": [],
+          "samples": [
+            "skip",
+            "skip level",
+            "to skip level",
+            "to skip this level",
+            "to skip the current level"
+          ]
+        },
+        {
+          "name": "UndoLevel",
+          "slots": [],
+          "samples": [
+            "revert",
+            "revert back",
+            "undo",
+            "undo next"
+          ]
+        },
+        {
+          "name": "OpenQueue",
+          "slots": [],
+          "samples": [
+            "enable",
+            "enable queue",
+            "enable the q",
+            "to enable the queue",
+            "open",
+            "open queue",
+            "open the q",
+            "to open the queue"
+          ]
+        },
+        {
+          "name": "CloseQueue",
+          "slots": [],
+          "samples": [
+            "disable",
+            "disable queue",
+            "disable the q",
+            "to disable the queue",
+            "close",
+            "close queue",
+            "close the q",
+            "to close the queue"
           ]
         },
         {
@@ -30,70 +84,6 @@
             "to erase chat",
             "to empty chat"
           ]
-        },
-        {
-          "name": "GetFollows",
-          "slots": [],
-          "samples": [
-            "how many followers i currently have",
-            "how many followers i have",
-            "how many followers",
-            "for total followers",
-            "for total follows",
-            "for current followers"
-          ]
-        },
-        {
-          "name": "GetGame",
-          "slots": [],
-          "samples": [
-            "tell me my current game",
-            "tell me my game",
-            "get my current game",
-            "get my game",
-            "what game i am playing",
-            "what game i'm playing",
-            "what my current game is",
-            "what is my current game",
-            "what category i am in",
-            "what category i'm in",
-            "what section i'm in",
-            "what section i am in"
-          ]
-        },
-        {
-          "name": "GetUptime",
-          "slots": [],
-          "samples": [
-            "to tell me my uptime",
-            "to get my uptime",
-            "for my uptime",
-            "for my stream uptime",
-            "for my total uptime",
-            "for my total stream uptime",
-            "for my current uptime",
-            "for my current stream uptime",
-            "how long i have been streaming",
-            "how long i've been streaming"
-          ]
-        },
-        {
-          "name": "GetViewers",
-          "slots": [],
-          "samples": [
-            "how many current viewers",
-            "how many viewers do i have",
-            "for total viewers",
-            "for current viewers",
-            "to get total viewers",
-            "to get viewers",
-            "for viewer count",
-            "whats my current viewer count"
-          ]
-        },
-        {
-          "name": "AMAZON.NavigateHomeIntent",
-          "samples": []
         }
       ],
       "types": []

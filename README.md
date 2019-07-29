@@ -10,12 +10,21 @@ Manages a Mario Maker queue in Twitch chat.
 
 ## Features
 
-- Get the next level from the Mario Maker queue in chat
+- Get the next level
+- Get a random level
+- Skip the current level
+- Undo getting the next level
+- Close the queue
+- Open the queue
 
 ## Example Phrases
 
-- Alexa, ask Mario Maker to get the next level
-- Alexa, ask Mario Maker to clear chat
+- Alexa, ask Mario Maker for the next level
+- Alexa, ask Mario Maker for a random level
+- Alexa, ask Mario Maker to skip
+- Alexa, ask Mario Maker to undo
+- Alexa, ask Mario Maker to Close the queue
+- Alexa, ask Mario Maker to Open the quueue
 
 ## Documentation
 
@@ -28,15 +37,17 @@ Manages a Mario Maker queue in Twitch chat.
 
 #### Short Skill Description
 
-Manage your Mario Maker queue from Alexa
+Manage your Mario Maker queue in Twitch chat from Alexa
 
 #### Full Skill Description
 
-Manage your Mario Maker queue from Alexa
+Manage your Mario Maker queue in Twitch chat from Alexa
 
 #### Phrases
 
-- Alexa, ask Maker Queue for the next level
+- Alexa, ask Mario Maker to open the queue
+- Alexa, ask Mario Maker for the next level
+- Alexa, ask Mario Maker for a random level
 
 #### URLs
 

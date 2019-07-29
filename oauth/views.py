@@ -196,7 +196,7 @@ def json_err(error_code, error_msg):
     return resp
 
 
-def redirect_err(request, error='Unknown Error', name='error', tags='danger'):
+def redirect_err(request, error='Unknown Error', name='oauth:error', tags='danger'):
     messages.add_message(
         request, messages.WARNING,
         error,
