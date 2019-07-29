@@ -30,6 +30,14 @@ def alexa_post(request):
             return get_next_level(event)
         elif intent == 'RandomLevel':
             return get_random_level(event)
+        elif intent == 'SkipLevel':
+            return skip_current_level(event)
+        elif intent == 'UndoLevel':
+            return undo_next_level(event)
+        elif intent == 'OpenQueue':
+            return open_maker_queue(event)
+        elif intent == 'CloseQueue':
+            return close_maker_queue(event)
         elif intent == 'GetTitle':
             return get_title(event)
         elif intent == 'UpdateTitle':
@@ -69,6 +77,34 @@ def get_random_level(event):
     twitch = Twitch(event['session']['user']['accessToken'])
     twitch.send_irc_msg('!random')
     return alexa_resp('Done.', 'Get Random Level')
+
+
+def skip_current_level(event):
+    logger.info('SkipLevel')
+    twitch = Twitch(event['session']['user']['accessToken'])
+    twitch.send_irc_msg('!skip')
+    return alexa_resp('I skipped the current level.', 'Skip Current Level')
+
+
+def undo_next_level(event):
+    logger.info('UndoLevel')
+    twitch = Twitch(event['session']['user']['accessToken'])
+    twitch.send_irc_msg('!undo')
+    return alexa_resp('I reverted the last level.', 'Undo Next Level')
+
+
+def open_maker_queue(event):
+    logger.info('OpenQueue')
+    twitch = Twitch(event['session']['user']['accessToken'])
+    twitch.send_irc_msg('!open')
+    return alexa_resp('The queue is now open.', 'Open Maker Queue')
+
+
+def close_maker_queue(event):
+    logger.info('CloseQueue')
+    twitch = Twitch(event['session']['user']['accessToken'])
+    twitch.send_irc_msg('!close')
+    return alexa_resp('The queue is now closed.', 'Close Maker Queue')
 
 
 def get_viewers(event):

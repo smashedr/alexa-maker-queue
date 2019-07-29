@@ -99,6 +99,7 @@
           "name": "NextLevel",
           "slots": [],
           "samples": [
+            "next",
             "next level",
             "for the next level",
             "to get the next level"
@@ -108,9 +109,55 @@
           "name": "RandomLevel",
           "slots": [],
           "samples": [
+            "random",
             "random level",
             "a random level",
             "for a random level"
+          ]
+        },
+        {
+          "name": "SkipLevel",
+          "slots": [],
+          "samples": [
+            "skip",
+            "skip level",
+            "to skip level",
+            "to skip the current level",
+            "to skip this level"
+          ]
+        },
+        {
+          "name": "UndoLevel",
+          "slots": [],
+          "samples": [
+            "revert",
+            "revert back",
+            "undo",
+            "undo next level"
+          ]
+        },
+        {
+          "name": "OpenQueue",
+          "slots": [],
+          "samples": [
+            "enable",
+            "open",
+            "enable queue",
+            "to enable the queue",
+            "open queue",
+            "to open the queue"
+          ]
+        },
+        {
+          "name": "CloseQueue",
+          "slots": [],
+          "samples": [
+            "disable",
+            "close",
+            "disable queue",
+            "to disable the queue",
+            "close queue",
+            "to close the queue"
           ]
         }
       ],
