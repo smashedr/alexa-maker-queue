@@ -19,12 +19,12 @@ Manages a Mario Maker queue in Twitch chat.
 
 ## Example Phrases
 
+- Alexa, ask Mario Maker to Close the queue
+- Alexa, ask Mario Maker to Open the quueue
 - Alexa, ask Mario Maker for the next level
 - Alexa, ask Mario Maker for a random level
 - Alexa, ask Mario Maker to skip
 - Alexa, ask Mario Maker to undo
-- Alexa, ask Mario Maker to Close the queue
-- Alexa, ask Mario Maker to Open the quueue
 
 ## Documentation
 

@@ -26,6 +26,7 @@ def alexa_post(request):
         event = json.loads(body)
         logger.debug(event)
         intent = event['request']['intent']['name']
+        logger.debug('intent: %s', intent)
         if intent == 'NextLevel':
             return get_next_level(event)
         elif intent == 'RandomLevel':
@@ -111,12 +112,12 @@ def clear_chat(event):
 def send_chat(event):
     logger.debug('SendChat')
     message = event['request']['intent']['slots']['message']['value']
-    logger.debug('message:raw: {}'.format(message))
+    logger.debug('message:raw: %s', message)
     message = message.lstrip('chat').strip()
     message = message.lstrip('to').strip()
     message = message.lstrip('say').strip()
     message = message.lstrip('i said').strip()
-    logger.debug('message:stripped: {}'.format(message))
+    logger.debug('message:stripped: %s', message)
     twitch = Twitch(event['session']['user']['accessToken'])
     twitch.send_irc_msg(message)
     return alexa_resp('Message sent.', 'Send Chat Message')
@@ -126,8 +127,8 @@ def chat_status(event):
     logger.debug('ChatStatus')
     status = event['request']['intent']['slots']['status']['value']
     mode = event['request']['intent']['slots']['mode']['value']
-    logger.debug('status: {}'.format(status))
-    logger.debug('mode: {}'.format(mode))
+    logger.debug('status: %s', status)
+    logger.debug('mode: %s', mode)
 
     if 'emote' in mode:
         chat_mode = 'emoteonly'
@@ -163,7 +164,7 @@ def get_title(event):
     channel = twitch.get_channel()
     logger.debug(channel)
     title = channel['status']
-    logger.debug('title: {}'.format(title))
+    logger.debug('title: %s', title)
     speech = 'Your current title is. {}'.format(title)
     return alexa_resp(speech, 'Current Title')
 
@@ -172,7 +173,7 @@ def update_title(event):
     logger.debug('UpdateTitle')
     title = event['request']['intent']['slots']['title']['value']
     title = title.title()
-    logger.debug('title: {}'.format(title))
+    logger.debug('title: %s', title)
     twitch = Twitch(event['session']['user']['accessToken'])
     update = twitch.update_channel(title)
     logger.debug(update)
@@ -184,7 +185,7 @@ def get_follows(event):
     logger.debug('GetFollows')
     twitch = Twitch(event['session']['user']['accessToken'])
     channel = twitch.get_channel()
-    logger.debug('channel:followers: {}'.format(channel['followers']))
+    logger.debug('channel:followers: %s', channel['followers'])
     speech = 'You currently have {} followers.'.format(channel['followers'])
     return alexa_resp(speech, 'Followers')
 
@@ -193,7 +194,7 @@ def get_game(event):
     logger.debug('GetGame')
     twitch = Twitch(event['session']['user']['accessToken'])
     channel = twitch.get_channel()
-    logger.debug('channel:game: {}'.format(channel['game']))
+    logger.debug('channel:game: %s', channel['game'])
     speech = 'You are currently playing. {}'.format(channel['game'])
     return alexa_resp(speech, 'Game')
 

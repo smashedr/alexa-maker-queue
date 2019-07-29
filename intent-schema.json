@@ -8,6 +8,34 @@
           "samples": []
         },
         {
+          "name": "OpenQueue",
+          "slots": [],
+          "samples": [
+            "enable",
+            "enable queue",
+            "enable the q",
+            "to enable the queue",
+            "open",
+            "open queue",
+            "open the q",
+            "to open the queue"
+          ]
+        },
+        {
+          "name": "CloseQueue",
+          "slots": [],
+          "samples": [
+            "disable",
+            "disable queue",
+            "disable the q",
+            "to disable the queue",
+            "close",
+            "close queue",
+            "close the q",
+            "to close the queue"
+          ]
+        },
+        {
           "name": "NextLevel",
           "slots": [],
           "samples": [
@@ -46,34 +74,6 @@
             "revert back",
             "undo",
             "undo next"
-          ]
-        },
-        {
-          "name": "OpenQueue",
-          "slots": [],
-          "samples": [
-            "enable",
-            "enable queue",
-            "enable the q",
-            "to enable the queue",
-            "open",
-            "open queue",
-            "open the q",
-            "to open the queue"
-          ]
-        },
-        {
-          "name": "CloseQueue",
-          "slots": [],
-          "samples": [
-            "disable",
-            "disable queue",
-            "disable the q",
-            "to disable the queue",
-            "close",
-            "close queue",
-            "close the q",
-            "to close the queue"
           ]
         },
         {
