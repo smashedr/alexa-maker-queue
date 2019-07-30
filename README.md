@@ -2,7 +2,7 @@
 
 [![build status](https://git.cssnr.com/shane/alexa-maker-queue/badges/master/build.svg)](https://git.cssnr.com/shane/alexa-maker-queue/commits/master) [![coverage report](https://git.cssnr.com/shane/alexa-maker-queue/badges/master/coverage.svg)](https://git.cssnr.com/shane/alexa-maker-queue/commits/master)
 
-Mario Maker Queue Manager for Alxea
+Mario Maker Queue Manager for Alexa
 
 ## Overview
 
@@ -10,8 +10,8 @@ Manages a Mario Maker queue in Twitch chat.
 
 ## Features
 
-- Close the queue
 - Open the queue
+- Close the queue
 - Get the next level
 - Get a random level
 - Skip the current level
@@ -25,11 +25,6 @@ Manages a Mario Maker queue in Twitch chat.
 - Alexa, ask Mario Maker for a random level
 - Alexa, ask Mario Maker to skip
 - Alexa, ask Mario Maker to undo
-
-## Documentation
-
-- Alexa: https://developer.amazon.com/docs/custom-skills/link-an-alexa-user-with-a-user-in-your-system.html
-- Twitch:  https://dev.twitch.tv/docs/authentication
 
 # Skill Information
 
